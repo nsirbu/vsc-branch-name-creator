@@ -1,1 +1,154 @@
-<!DOCTYPE html><html lang="en">  <head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-    scale=1.0">    <title>Document</title>  </head><body>  <h1>Hello World</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VCS Branch Name Creator</title>
+
+    <style>
+      :root {
+        --backgroundColor: whitesmoke;
+        --containerWidth: 500px;
+      }
+
+      body {
+        background-color: var(--backgroundColor);
+        overflow: hidden;
+      }
+
+      #container {
+        width: var(--containerWidth);
+        height: 100px;
+        background-color: var(--backgroundColor);
+      }
+
+      #input-name-container,
+      #output-name-container {
+        padding: 4px;
+        /* width: 90%; */
+        height: 50px;
+      }
+
+      #output-name-container-left {
+        float: left;
+        width: 94%;
+        height: 100%;
+      }
+
+      #output-name-container-right {
+        float: right;
+        width: 6%;
+        height: 100%;
+      }
+
+      #input-name,
+      #output-name {
+        width: calc(var(--containerWidth) - 60px);
+        padding: 4px;
+      }
+
+      #copy {
+        width: 20px;
+        height: 20px;
+        padding-top: 22px;
+      }
+
+      #copy:hover {
+        cursor: pointer;
+      }
+
+      #copiedToClipboard {
+        font-size: 12px;
+        font-family: Consolas, monaco, monospace;
+        color: #404040;
+        width: 100%;
+        text-align: center;
+      }
+
+      .label {
+        color: #404040;
+        font-family: Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+      }
+
+      .visible {
+        opacity: 1;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
+    </style>
+
+    <script type="text/javascript">
+      function convert() {
+        var taskName = document.getElementById("input-name").value;
+        var vcsBranchName = taskName.toLowerCase().replace(/\s/g, "-");
+        document.getElementById("output-name").value = vcsBranchName;
+      }
+
+      function onEnter() {
+        if (event.keyCode == 13) {
+          copyToClipboard();
+        }
+      }
+
+      function copyToClipboard() {
+        /* Get the text field */
+        var copyText = document.getElementById("output-name");
+
+        /* Select the text field */
+        copyText.select();
+        // copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+        copyText.blur();
+
+        showCopyNotification();
+        setTimeout(() => hideCopyNotification(), 2000);
+      }
+
+      function showCopyNotification() {
+        var copyNotification = document.getElementById("copiedToClipboard");
+        copyNotification.classList.remove("hidden");
+        copyNotification.classList.add("visible");
+      }
+
+      function hideCopyNotification() {
+        var copyNotification = document.getElementById("copiedToClipboard");
+        copyNotification.classList.remove("visible");
+        copyNotification.classList.add("hidden");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="input-name-container">
+        <label for="input-name" class="label">Jira task name</label>
+        <input
+          id="input-name"
+          type="text"
+          autocomplete="off"
+          autofocus
+          oninput="convert()"
+          onkeypress="onEnter()"
+        />
+      </div>
+      <div id="output-name-container">
+        <div id="output-name-container-left">
+          <label for="output-name" class="label">VCS branch name</label>
+          <input id="output-name" type="text" autocomplete="off" />
+          <div id="copiedToClipboard" class="hidden">Copied to clipboard!</div>
+        </div>
+        <div id="output-name-container-right">
+          <img
+            id="copy"
+            src="img/copy.png"
+            title="Copy"
+            onclick="copyToClipboard()"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

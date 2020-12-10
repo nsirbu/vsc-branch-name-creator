@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VCS Branch Name Creator</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="title">VCS branch name creator</div>
+      <div id="inputNameContainer">
+        <label for="inputName" class="label">Jira task name</label>
+        <input id="inputName" type="text" autocomplete="off" autofocus />
+      </div>
+      <div id="outputNameContainer">
+        <label for="outputName" class="label">VCS branch name</label>
+        <div id="outputNameContainer-left">
+          <input id="outputName" type="text" autocomplete="off" readonly />
+        </div>
+        <div id="outputNameContainer-right">
+          <img id="copyBtn" src="img/copy.png" title="Copy" />
+        </div>
+      </div>
+      <div id="copiedToClipboard" class="hidden">Copied to clipboard!</div>
+    </div>
+  </body>
+</html>

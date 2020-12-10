@@ -1,0 +1,86 @@
+:root {
+  --backgroundColor: whitesmoke;
+  --containerWidth: 500px;
+}
+
+body {
+  background-color: var(--backgroundColor);
+  overflow: hidden;
+}
+
+#container {
+  width: var(--containerWidth);
+  height: 140px;
+  background-color: var(--backgroundColor);
+}
+
+#title {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#inputNameContainer,
+#outputNameContainer {
+  padding: 4px;
+  /* height: 50px; */
+}
+
+#outputNameContainer-left {
+  float: left;
+  width: 93%;
+  height: 100%;
+  /* border: 1px solid red; */
+}
+
+#outputNameContainer-right {
+  float: right;
+  width: 6%;
+  height: 100%;
+}
+
+#inputName,
+#outputName {
+  padding: 4px;
+}
+
+#inputName {
+  width: calc(var(--containerWidth) - 20px);
+}
+
+#outputName {
+  width: calc(var(--containerWidth) - 60px);
+}
+
+#copyBtn {
+  width: 20px;
+  height: 20px;
+  padding-top: 2px;
+}
+
+#copyBtn:hover {
+  cursor: pointer;
+}
+
+#copiedToClipboard {
+  font-size: 12px;
+  font-family: Consolas, monaco, monospace;
+  color: #404040;
+  width: 100%;
+  text-align: center;
+  padding-top: 6px;
+  float: left;
+}
+
+.label {
+  color: #404040;
+  font-family: Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}

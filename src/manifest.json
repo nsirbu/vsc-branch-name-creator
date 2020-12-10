@@ -3,18 +3,15 @@
   "name": "VCS Branch Name Creator",
   "version": "1.0",
   "description": "Transform a given String to lowercase and replace all empty spaces with hyphens.",
+  "icons": {
+    "16": "img/icon16.png",
+    "32": "img/icon32.png",
+    "48": "img/icon48.png"
+  },
   "permissions": ["activeTab"],
   "browser_action": {
     "default_title": "VCS Branch Name Creator",
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "img/icon16.png",
-      "32": "img/icon32.png",
-      "48": "img/icon48.png"
-    }
-  },
-  "background": {
-    "scripts": ["popup.js"]
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {

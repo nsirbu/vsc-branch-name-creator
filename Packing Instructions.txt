@@ -1,0 +1,7 @@
+1. Get the credentials from AMO: https://addons.mozilla.org/en-US/developers/addon/api/key/.
+2. Download NodeJs.
+3. Run CMD. Install web-ext using this command: npm install --global web-ext
+4. Go to your AddOn directory. For Example: cd E:\My-Projects\AddOn
+5. Run this command: web-ext sign --api-key="JWT issuer" --api-secret="JWT secret"
+6. A folder with "web-ext-artifacts" name and an XPI file would be created. You can install the XPI!
+

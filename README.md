@@ -4,3 +4,5 @@ This extension helps creating the name for a VCS branch by transforming a given 
 
 Input: `Page header not translated when switching language`  
 Output: `page-header-not-translated-when-switching-language`
+
+![Alt text](vcs-branch-name-creator.gif?raw=true)

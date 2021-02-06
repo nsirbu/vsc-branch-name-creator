@@ -22,7 +22,7 @@ function onEnter(event) {
 
 function convert() {
   var taskName = getTextToConvert();
-  var vcsBranchName = taskName.toLowerCase().replace(/\s/g, "-");
+  var vcsBranchName = taskName.toLowerCase().replace(/\s/g, "-").replace(/[\])}[{(/\\]/g, "");
   document.getElementById("outputName").value = vcsBranchName;
 }
 

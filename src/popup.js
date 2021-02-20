@@ -21,8 +21,13 @@ function onEnter(event) {
 }
 
 function convert() {
-  var taskName = getTextToConvert();
-  var vcsBranchName = taskName.toLowerCase().replace(/\s/g, "-").replace(/[\])}[{(/\\]/g, "");
+  let taskName = getTextToConvert();
+  let vcsBranchName = new BranchNameBuilder(taskName)
+    .toLowerCase()
+    .removeEmptySpaces()
+    .removeSpecialCharacters()
+    .build();
+
   document.getElementById("outputName").value = vcsBranchName;
 }
 
@@ -59,3 +64,25 @@ function hideCopyNotification() {
   copyNotification.classList.remove("visible");
   copyNotification.classList.add("hidden");
 }
+
+let BranchNameBuilder = function (input) {
+  let branchName = input;
+
+  return {
+    toLowerCase: function () {
+      branchName = branchName.toLowerCase();
+      return this;
+    },
+    removeEmptySpaces: function () {
+      branchName = branchName.replace(/\s/g, "-");
+      return this;
+    },
+    removeSpecialCharacters: function () {
+      branchName = branchName.replace(/[.,\/#!$%\^&\*;:{}\_=`~()'"[\]]/g, "");
+      return this;
+    },
+    build: function () {
+      return branchName;
+    },
+  };
+};
